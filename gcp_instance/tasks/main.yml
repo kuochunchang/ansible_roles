@@ -1,0 +1,25 @@
+- name: Bring-up/delete the GCP instance
+  gcp_compute_instance:
+    name: "{{ instance_name }}"
+    machine_type: "{{ machine_type }}"
+    disks:
+      - auto_delete: true
+        boot: true
+        initialize_params:
+          source_image: "{{ image }}"
+          disk_size_gb: "{{ disk_size_gb }}"
+    network_interfaces:
+      - access_configs:
+          - name: External NAT
+            # nat_ip: "{{ gcea_ip }}"
+            type: ONE_TO_ONE_NAT
+    tags:
+      items:
+        - http-server
+        - https-server
+    zone: "{{ zone }}"
+    project: "{{ project }}"
+    service_account_file: "{{ credentials_file }}"
+    auth_kind: "{{ auth_kind }}"
+    state: "{{ state }}"
+  register: gcea
