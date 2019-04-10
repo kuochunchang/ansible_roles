@@ -23,3 +23,4 @@
     auth_kind: "{{ auth_kind }}"
     state: "{{ state }}"
   register: gcea
+# - debug: msg="{{ gcea.network_interfaces }}"
