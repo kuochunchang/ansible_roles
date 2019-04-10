@@ -1,0 +1,13 @@
+project: emmet-hyperledger
+credentials_file: /home/guojun/.gcp/emmet-hyperledger-559310d8f636.json
+auth_kind: serviceaccount
+zone: asia-east1-b
+
+k8s_cluster_name: fabric-cluster
+k8s_initial_node_count: 2
+k8s_initial_machine_type: n1-standard-1
+k8s_node_disk_size_gb: 30
+k8s_master_auth_username: admin
+k8s_master_auth_password: iammasterbuilder
+
+k8s_state: present

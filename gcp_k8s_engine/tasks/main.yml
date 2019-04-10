@@ -1,0 +1,16 @@
+- name: create a cluster
+  gcp_container_cluster:
+      name: "{{ k8s_cluster_name }}"
+      initial_node_count: "{{ k8s_initial_node_count }}"
+      master_auth:
+        username: "{{ k8s_master_auth_username }}"
+        password: "{{ k8s_master_auth_password }}"
+      node_config:
+        machine_type: "{{ k8s_initial_machine_type }}"
+        disk_size_gb: "{{ k8s_node_disk_size_gb }}"
+      zone: "{{ zone }}"
+      project: "{{ project }}"
+      auth_kind: "{{ auth_kind }}"
+      service_account_file: "{{ credentials_file }}"
+      state: "{{ state }}"
+  register: gke 
